@@ -25,6 +25,7 @@ namespace LoggingDemo.Pages
 
             _logger.LogError("The server wen down temporarily at {Time}", DateTime.UtcNow);
 
+            // Advanced loggin messages
             try
             {
                 throw new Exception("U forget to catch me");
