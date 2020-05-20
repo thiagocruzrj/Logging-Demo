@@ -6,11 +6,17 @@ namespace LoggingDemo.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly ILogger _logger;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        // Default way to capturing the category
+        //public IndexModel(ILogger<IndexModel> logger)
+        //{
+        //    _logger = logger;
+        //}
+
+        public IndexModel(ILoggerFactory factory)
         {
-            _logger = logger;
+            _logger = factory.CreateLogger("DemoCategory");
         }
 
         public void OnGet()
