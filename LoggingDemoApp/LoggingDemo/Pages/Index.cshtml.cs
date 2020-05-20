@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace LoggingDemo.Pages
 {
@@ -14,12 +15,25 @@ namespace LoggingDemo.Pages
 
         public void OnGet()
         {
+            // organizing by order of severity
             _logger.LogTrace("This is a Trace log");
             _logger.LogDebug("This is a Debug log");
             _logger.LogInformation("This is an information log");
             _logger.LogWarning("This is a warning log");
             _logger.LogError("This is a error log");
             _logger.LogCritical("This is a critial log");
+
+            _logger.LogError("The server wen down temporarily at {Time}", DateTime.UtcNow);
+
+            try
+            {
+                throw new Exception("U forget to catch me");
+            }
+            catch (Exception ex)
+            {
+
+                _logger.LogCritical(ex, "There was a bad exception at {Time}", DateTime.UtcNow);
+            }
         }
     }
 
