@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
 namespace LoggingDemo.Pages
@@ -19,7 +14,17 @@ namespace LoggingDemo.Pages
 
         public void OnGet()
         {
-
+            _logger.LogTrace("This is a Trace log");
+            _logger.LogDebug("This is a Debug log");
+            _logger.LogInformation("This is an information log");
+            _logger.LogWarning("This is a warning log");
+            _logger.LogError("This is a error log");
+            _logger.LogCritical("This is a critial log");
         }
+    }
+
+    public class LoggingId
+    {
+        public const int DemoCode = 1001;
     }
 }

@@ -18,6 +18,9 @@ namespace LoggingDemo
                 {
                     logging.ClearProviders();
                     logging.AddConfiguration(context.Configuration.GetSection("Logging"));
+                    logging.AddDebug();
+                    logging.AddConsole();
+                    // EventSource, EventLog, TraceSourceServiceFile, AzureAppServiceBlob, ApplicationsInside
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
